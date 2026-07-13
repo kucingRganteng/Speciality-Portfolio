@@ -8,19 +8,56 @@
 </head>
 <body>
 
+    <p id="HHI">THIS LANGUAGE OPTION IS STILL WORK IN PROGRESS</p>
+
     <div class="hud-container">
+        <div class="language-selector">
+            <select id="lang-select">
+                <option value="en" selected>🇬🇧 English</option>
+                <option value="id">🇮🇩 Indonesia</option>
+            </select>
+        </div>
         <div class="box1">
             <img src="Welcome.png" alt="Logo">
-            <p>> SPECIALTY/NOTANS PORTFOLIO...</p>
+            <p>> Welcome</p>
         </div>
         
-        <div class="box2">
-            <h1>> "i want to be something im not. "</h1>
-            <h3>Roblox Developer • Artist • Animator Specializing in Luau scripting, with additional experience in JavaScript, HTML, and CSS.</h3>
+        <div class="box-row">
+            <div class="box2">
+                <h1>> About me</h1>
+                <h3>I enjoy making games, learning programming, and creating digital art. Most of the projects I work on are built in Roblox Studio using Luau. Right now, I'm also learning JavaScript, HTML, and CSS through personal projects. In the future, I want to learn Godot and Unity so I can create my own games.</h3>
+            </div>
+
+            <div class="box3">
+                <h1>Who do you wanna know?</h1>
+                <a href="SpecialityProfile.html">
+                    <button class="btn-spec"
+                        data-title='> "Speciality"'
+                        data-focus='> "At least it works... yeah?" Started making Roblox games around 2022 or 2023 (I honestly forgot). I began by learning Luau, then picked up HTML, CSS, and JavaScript while working on personal projects'>
+                        Specialty
+                    </button>
+                </a>
+                <a href="NotansProfile.html">
+                    <button class="btn-notans"
+                        data-title='> "Notans"'
+                        data-focus='> "DAMN YOU, ART BLOCK!" seven years of drawing.. idk what to say anymore'>
+                        Notans
+                    </button>
+                </a>
+            </div>
+
+            <div class="box4" id="focus-box">
+                <h1 id="focus-title">> Focus Display</h1>
+                <h3 id="focus-text">
+                    Hover over a profile to get a quick overview. Click a profile to learn more about it.
+                </h3>
+            </div>
         </div>
     </div>
 
-    <h1 id="HHA">> Work In Progress PORTFOLIO...</h1>
+    <h1 id="HHA">> Work In Progress...</h1>
+
+    <script src="script.js"></script>
     
 </body>
 </html>
