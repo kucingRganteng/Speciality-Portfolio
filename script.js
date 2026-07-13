@@ -3,7 +3,6 @@ const focusTitle = document.getElementById('focus-title');
 const focusText = document.getElementById('focus-text');
 const buttons = document.querySelectorAll('.box3 button');
 
-// Save the default setup text
 const defaultTitle = focusTitle.innerHTML;
 const defaultText = focusText.innerHTML;
 
@@ -13,17 +12,13 @@ buttons.forEach(button => {
         focusText.innerHTML = button.getAttribute('data-focus');
             
         if (button.classList.contains('btn-spec')) {
-            // Apply Speciality Theme
             focusBox.classList.add('theme-spec');
             
-            // Retaining your dynamic border adjustments
             focusBox.style.borderColor = '#0055ff';
             focusBox.style.boxShadow = '0 0 15px rgba(0, 85, 255, 0.2)';
         } else if (button.classList.contains('btn-notans')) {
-            // Apply Notans Theme
             focusBox.classList.add('theme-notans');
             
-            // Retaining your dynamic border adjustments
             focusBox.style.borderColor = '#9d00ff';
             focusBox.style.boxShadow = '0 0 15px rgba(157, 0, 255, 0.2)';
         }
@@ -33,10 +28,8 @@ buttons.forEach(button => {
         focusTitle.innerHTML = defaultTitle;
         focusText.innerHTML = defaultText;
         
-        // Remove the theme classes when mouse leaves
         focusBox.classList.remove('theme-spec', 'theme-notans');
             
-        // Reset borders back to original
         focusBox.style.borderColor = '#51125e';
         focusBox.style.boxShadow = '0 0 15px rgba(255, 140, 0, 0.15)';
     });
