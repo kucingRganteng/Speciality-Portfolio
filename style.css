@@ -12,6 +12,7 @@ body, html {
     font-family: 'Trebuchet MS', 'Arial', sans-serif;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -72,7 +73,7 @@ body, html {
 }
 
 .box2 h3 {
-    color: #7a0092; /* Slightly dimmer orange for secondary body text readability */
+    color: #7a0092;
     font-size: 14px;
     font-weight: normal;
     line-height: 1.6;
@@ -80,18 +81,9 @@ body, html {
     margin-bottom: 25px;
 }
 
-.hl-btn {
-    background: rgba(255, 140, 0, 0.15);
-    border: 1px solid #7a0092;
-    color: #7a0092;
-    padding: 10px 20px;
-    font-family: 'Trebuchet MS', sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: all 0.2s ease;
-    width: 100%;
+#HHA{
+    color: #7a00926e;
+    font-size: 20px;
 }
 
 @keyframes rotation {
