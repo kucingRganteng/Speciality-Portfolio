@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speciality Profile</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <a href="index.html" class="fixed-back-btn" aria-label="Go back">
+        ← Back
+    </a>
+
+    <div class="profile-container">
+        
+        <div class="side-image left-side">
+            <img src="FaceShot.png" alt="Face Shot" class="faceshot">
+        </div>
+
+        <div class="main-content">
+            <div class="about-text">
+                <h2>"yo hey, i'm Not An Ants. or you can just call me Notans."</h2>
+
+                <p> 
+                    welcome to my little corner of the internet. honestly, i didn't put that much effort into this profile. 
+                    i've been spending not a lot of time drawing lately, the fun i used to have for it has slowly started to fade. 
+                    i don't really know why, but i keep drawing anyway. so... enjoy your stay, i guess. 
+                </p>
+
+                <h3>- What am I Good At?</h3> 
+                <p> 
+                    mostly digital art, along with 2D and a bit of 3D animation. i'm still pretty bad at 3D, but i'm trying to get better. 
+                    i'm also a perfectionist, which usually means if i don't like something i made, 
+                    i'll either restart it from scratch or throw it away and call the whole thing a waste of time. 
+                </p>
+            </div>
+            <img src="full body.png" alt="Full Body" class="full-body-img">
+        </div>
+
+        <div class="side-image right-side">
+            <img src="HalfShot.png" alt="Half Shot" class="halfshot">
+        </div>
+
+    </div>
+
+    <div class="bottom-container">
+        
+        <div class="youtube-block">
+            <img src="HalfShot.png" alt="YouTube Profile" class="yt-profile-img">
+            <div class="yt-info">
+                <h3>Notans</h3>
+                <a href="https://www.youtube.com/@notanants" target="_blank" class="yt-link">youtube.com/@notans</a>
+            </div>
+        </div>
+
+        <div class="gallery-wrapper">
+            <h2 class="gallery-title">★ picked arts</h2>
+
+            <div class="art-gallery">
+                <div class="paper-shoot">
+                    <img src="art1.png" alt="Art 1">
+                    <span class="art-desc">A collab with my brothers (mediaval collab)</span>
+                </div>
+
+                <div class="paper-shoot">
+                    <img src="art2.png" alt="Art 2">
+                    <span class="art-desc">for a contest</span>
+                </div>
+
+                <div class="paper-shoot">
+                    <img src="art3.png" alt="Art 3">
+                    <span class="art-desc">wannabe mangaka 🌹</span>
+                </div>
+
+                <div class="paper-shoot">
+                    <img src="art4.png" alt="Art 4">
+                    <span class="art-desc">"oh jane.. you are early" scraped animation</span>
+                </div>
+                <div class="paper-shoot">
+                    <img src="art5.png" alt="Art 5">
+                    <span class="art-desc">The Reaper fan-art from ZumbiBlocks2</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="zoom-overlay" id="zoomOverlay"></div>
+
+    <script>
+        const galleryItems = document.querySelectorAll('.paper-shoot');
+        const overlay = document.getElementById('zoomOverlay');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const clone = item.cloneNode(true);
+                
+                clone.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                });
+
+                overlay.appendChild(clone);
+                overlay.classList.add('active');
+            });
+        });
+
+        overlay.addEventListener('click', () => {
+            overlay.classList.remove('active');
+            setTimeout(() => {
+                overlay.innerHTML = '';
+            }, 300);
+        });
+    </script>
+    
+</body>
+</html>
