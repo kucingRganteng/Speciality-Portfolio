@@ -16,6 +16,7 @@
         
         <div class="side-image left-side">
             <img src="FaceShot.png" alt="Face Shot" class="faceshot">
+            <img src="HalfShot.png" alt="Half Shot" class="halfshot">
         </div>
 
         <div class="main-content">
@@ -24,7 +25,7 @@
 
                 <p> 
                     welcome to my little corner of the internet. honestly, i didn't put that much effort into this profile. 
-                    i've been spending not a lot of time drawing lately, the fun i used to have for it has slowly started to fade. 
+                    i've been spending NOT a lot of time drawing lately, the fun i used to have for it has slowly started to fade. 
                     i don't really know why, but i keep drawing anyway. so... enjoy your stay, i guess. 
                 </p>
 
@@ -38,16 +39,12 @@
             <img src="full body.png" alt="Full Body" class="full-body-img">
         </div>
 
-        <div class="side-image right-side">
-            <img src="HalfShot.png" alt="Half Shot" class="halfshot">
-        </div>
-
     </div>
 
     <div class="bottom-container">
         
         <div class="youtube-block">
-            <img src="HalfShot.png" alt="YouTube Profile" class="yt-profile-img">
+            <img src="ProbMe.png" alt="YouTube Profile" class="yt-profile-img">
             <div class="yt-info">
                 <h3>Notans</h3>
                 <a href="https://www.youtube.com/@notanants" target="_blank" class="yt-link">youtube.com/@notans</a>
@@ -88,30 +85,7 @@
 
     <div class="zoom-overlay" id="zoomOverlay"></div>
 
-    <script>
-        const galleryItems = document.querySelectorAll('.paper-shoot');
-        const overlay = document.getElementById('zoomOverlay');
-
-        galleryItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                const clone = item.cloneNode(true);
-                
-                clone.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                });
-
-                overlay.appendChild(clone);
-                overlay.classList.add('active');
-            });
-        });
-
-        overlay.addEventListener('click', () => {
-            overlay.classList.remove('active');
-            setTimeout(() => {
-                overlay.innerHTML = '';
-            }, 300);
-        });
-    </script>
+    <script src="script2.js"></script>
     
 </body>
 </html>

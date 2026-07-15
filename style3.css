@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* Retro diagonal stripe texture */
+    background: repeating-linear-gradient(
+        45deg,
+        #879faa,
+        #879faa 10px,
+        #8097a2 10px,
+        #8097a2 20px
+    );
+    font-family: "Lucida Console", Monaco, monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.fixed-back-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-family: sans-serif;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.fixed-back-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: scale(1.05);
+}
+
+.profile-container {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    max-width: 960px;
+    justify-content: center;
+    align-items: flex-start; /* Prevents cards stretching vertically */
+}
+
+.profile-card {
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+
+.profile-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 450px; /* Limits the max width so it doesn't stretch too wide */
+    width: 100%;
+}
+
+.roblox-theme {
+    background-color: #E1E1E1;
+}
+.roblox-theme .avatar-container {
+    background: radial-gradient(circle, #bcd6e8 0%, #7da4c4 100%);
+    border: 3px inset #7da4c4;
+}
+.roblox-theme h2 { color: #002966; }
+
+.vortex-theme {
+    background-color: #DCD0EC;
+}
+.vortex-theme .avatar-container {
+    background: radial-gradient(circle, #dfcbf7 0%, #8c63c7 100%);
+    border: 3px inset #8c63c7;
+}
+.vortex-theme h2 { 
+    color: #3d0066; 
+}
+
+.banner-wrapper {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    border: 2px inset #555;
+    background-color: #000;
+    margin-bottom: 15px;
+}
+
+.banner-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    max-height: 40px;
+    object-fit: contain;
+    filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.7));
+}
+
+.avatar-container {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 15px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.profile-content {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    border: 1px solid #999;
+    text-align: center;
+    font-size: 13px;
+    color: #333;
+}
+
+.profile-content h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.tabs-container {
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+
+.roblox-tabs {
+    background-color: #E1E1E1;
+}
+
+.vortex-tabs {
+    background-color: #DCD0EC;
+}
+
+.tab-buttons {
+    display: flex;
+    gap: 5px;
+    border-bottom: 3px inset #7da4c4;
+    padding-bottom: 5px;
+}
+
+.tab-btn {
+    background-color: #cccccc;
+    border: 3px outset #ffffff;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-weight: bold;
+    color: #333;
+    transition: background 0.1s;
+}
+
+.tab-btn:hover {
+    background-color: #dddddd;
+}
+
+.tab-btn.active {
+    background-color: #879faa; /* Changes to match theme color */
+    color: white;
+    border: 3px inset #555;
+}
+
+/* Tab Content Visibility */
+.tab-content {
+    display: none;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 2px inset #999;
+    margin-top: 10px;
+    min-height: 150px;
+}
+
+.tab-content.active-content {
+    display: block;
+}
+
+.tab-content h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #002966;
+    text-transform: uppercase;
+}
+
+.tab-content p {
+    font-size: 13px;
+    line-height: 1.4;
+    color: #222;
+}
+
+/* Status Alert Styles */
+.project-box, .status-box {
+    padding: 10px;
+    border: 1px dashed #666;
+    margin-top: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.highlight-text {
+    color: #3d0066; /* Vortex Purple Accent */
+    font-weight: bold;
+}
+
+.status-tag {
+    color: #cc0000;
+    font-weight: bold;
+}
+
+.tab-divider {
+    margin: 15px 0;
+    border: 0;
+    border-top: 2px ridge #fff;
+}
+.game-links-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.game-links-list li {
+    margin-bottom: 8px;
+    padding: 6px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px inset #bbb;
+}
+
+.game-links-list a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    display: block;
+}
+
+.game-links-list a:hover {
+    color: #002266;
+    text-decoration: underline;
+}
+
+.vortex-tabs .game-links-list a {
+    color: #551a8b;
+}
+.vortex-tabs .game-links-list a:hover {
+    color: #3d0066;
+}
