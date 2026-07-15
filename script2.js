@@ -1,36 +1,89 @@
-const focusBox = document.getElementById('focus-box');
-const focusTitle = document.getElementById('focus-title');
-const focusText = document.getElementById('focus-text');
-const buttons = document.querySelectorAll('.box3 button');
-
-const defaultTitle = focusTitle.innerHTML;
-const defaultText = focusText.innerHTML;
-
-buttons.forEach(button => {
-    button.addEventListener('mouseenter', () => {
-        focusTitle.innerHTML = button.getAttribute('data-title');
-        focusText.innerHTML = button.getAttribute('data-focus');
+document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById("zoomOverlay");
+    document.addEventListener("click", (e) => {
+        const card = e.target.closest(".paper-shoot");
+        
+        if (card && !overlay.classList.contains("active")) {
+            const cardClone = card.cloneNode(true);
             
-        if (button.classList.contains('btn-spec')) {
-            focusBox.classList.add('theme-spec');
+            overlay.innerHTML = "";
+            overlay.appendChild(cardClone);
             
-            focusBox.style.borderColor = '#0055ff';
-            focusBox.style.boxShadow = '0 0 15px rgba(0, 85, 255, 0.2)';
-        } else if (button.classList.contains('btn-notans')) {
-            focusBox.classList.add('theme-notans');
-            
-            focusBox.style.borderColor = '#9d00ff';
-            focusBox.style.boxShadow = '0 0 15px rgba(157, 0, 255, 0.2)';
+            overlay.classList.add("active");
         }
     });
 
-    button.addEventListener('mouseleave', () => {
-        focusTitle.innerHTML = defaultTitle;
-        focusText.innerHTML = defaultText;
-        
-        focusBox.classList.remove('theme-spec', 'theme-notans');
-            
-        focusBox.style.borderColor = '#51125e';
-        focusBox.style.boxShadow = '0 0 15px rgba(255, 140, 0, 0.15)';
+    overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) {
+            overlay.classList.remove("active");
+            setTimeout(() => {
+                if (!overlay.classList.contains("active")) {
+                    overlay.innerHTML = "";
+                }
+            }, 300);
+        }
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && overlay.classList.contains("active")) {
+            overlay.classList.remove("active");
+            setTimeout(() => {
+                overlay.innerHTML = "";
+            }, 300);
+        }
     });
 });
+
+const audio = document.getElementById('myAudio');
+const playBtn = document.getElementById('playBtn');
+const playerContainer = document.querySelector('.music-player');
+const progressBar = document.getElementById('progressBar');
+const currentTimeDisplay = document.getElementById('currentTime');
+const durationTimeDisplay = document.getElementById('durationTime');
+
+function formatTime(seconds) {
+    if (isNaN(seconds)) return "0:00";
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
+if (playBtn && audio) {
+    playBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            playBtn.textContent = 'Pause ⏸';
+            playerContainer.classList.add('playing');
+        } else {
+            audio.pause();
+            playBtn.textContent = 'Play ▶';
+            playerContainer.classList.remove('playing');
+        }
+    });
+
+    audio.addEventListener('timeupdate', () => {
+        if (audio.duration) {
+            const progressPercent = (audio.currentTime / audio.duration) * 100;
+            progressBar.value = progressPercent;
+            currentTimeDisplay.textContent = formatTime(audio.currentTime);
+        }
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+        durationTimeDisplay.textContent = formatTime(audio.duration);
+    });
+
+    progressBar.addEventListener('input', () => {
+        if (audio.duration) {
+            const seekTime = (progressBar.value / 100) * audio.duration;
+            audio.currentTime = seekTime;
+        }
+    });
+
+    audio.addEventListener('ended', () => {
+        playBtn.textContent = 'Play ▶';
+        progressBar.value = 0;
+        currentTimeDisplay.textContent = "0:00";
+        playerContainer.classList.remove('playing');
+    });
+}

@@ -315,6 +315,47 @@ body::before {
     display: none;
 }
 
+.sidebar-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 340px; /* Matches your typical box width */
+}
+
+.commissions-locked-block {
+    opacity: 0.6;
+    cursor: not-allowed;
+    border: 2px dashed #555 !important; /* Dotted style to show it's unavailable */
+    background: rgba(0, 0, 0, 0.4) !important;
+    margin-top: 15px; /* Adds space right below the YouTube block */
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.commissions-locked-block h3 {
+    color: #888 !important;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.status-msg {
+    font-weight: bold;
+    color: #ff4444;
+    font-size: 11px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.sub-text {
+    font-size: 11px;
+    font-style: italic;
+    color: #8a8a8a;
+}
+
 @keyframes steps-rotation {
     0%, 100% { transform: rotate(-5deg); }
     50%      { transform: rotate(5deg);  }

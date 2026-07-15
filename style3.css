@@ -8,20 +8,20 @@ body, html {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    /* Retro diagonal stripe texture */
+    /* Richer, slightly darker retro diagonal stripe texture */
     background: repeating-linear-gradient(
         45deg,
-        #879faa,
-        #879faa 10px,
-        #8097a2 10px,
-        #8097a2 20px
+        #728b97,
+        #728b97 12px,
+        #6a828e 12px,
+        #6a828e 24px
     );
     font-family: "Lucida Console", Monaco, monospace;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 40px 20px;
     overflow-x: hidden;
     position: relative;
 }
@@ -31,20 +31,32 @@ body, html {
     top: 15px;
     left: 15px;
     z-index: 9999;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #ffffff;
-    padding: 6px 12px;
-    font-size: 14px;
-    font-family: sans-serif;
+    background-color: #c0c0c0;
+    color: #000000;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: bold;
     text-decoration: none;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    border-radius: 0px;
+    /* Retro classic button look */
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    transition: transform 0.1s ease;
 }
 
 .fixed-back-btn:hover {
-    background-color: rgba(0, 0, 0, 0.9);
-    transform: scale(1.05);
+    background-color: #d8d8d8;
+}
+
+.fixed-back-btn:active {
+    border-top: 2px solid #404040;
+    border-left: 2px solid #404040;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    padding: 7px 13px 5px 15px;
 }
 
 .profile-container {
@@ -53,51 +65,64 @@ body, html {
     width: 100%;
     max-width: 960px;
     justify-content: center;
-    align-items: flex-start; /* Prevents cards stretching vertically */
+    align-items: flex-start;
 }
 
-.profile-card {
-    width: 100%;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+/* Responsive fix: Stack vertically on smaller screens */
+@media (max-width: 800px) {
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
 }
 
 .profile-column {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    max-width: 450px; /* Limits the max width so it doesn't stretch too wide */
+    gap: 20px;
+    max-width: 450px;
     width: 100%;
 }
 
-.roblox-theme {
-    background-color: #E1E1E1;
+/* Shared Retro UI Box Styling */
+.profile-card, .tabs-container {
+    width: 100%;
+    padding: 12px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+    border-top: 3px solid #ffffff;
+    border-left: 3px solid #ffffff;
+    border-right: 3px solid #555555;
+    border-bottom: 3px solid #555555;
 }
+
+.roblox-theme, .roblox-tabs {
+    background-color: #d6d6d6;
+}
+
+.vortex-theme, .vortex-tabs {
+    background-color: #cfc2e5;
+}
+
 .roblox-theme .avatar-container {
     background: radial-gradient(circle, #bcd6e8 0%, #7da4c4 100%);
     border: 3px inset #7da4c4;
 }
 .roblox-theme h2 { color: #002966; }
 
-.vortex-theme {
-    background-color: #DCD0EC;
-}
 .vortex-theme .avatar-container {
     background: radial-gradient(circle, #dfcbf7 0%, #8c63c7 100%);
     border: 3px inset #8c63c7;
 }
-.vortex-theme h2 { 
-    color: #3d0066; 
-}
+.vortex-theme h2 { color: #3d0066; }
 
 .banner-wrapper {
     position: relative;
     width: 100%;
     height: 120px;
     overflow: hidden;
-    border: 2px inset #555;
+    border: 3px inset #777;
     background-color: #000;
     margin-bottom: 15px;
 }
@@ -106,26 +131,27 @@ body, html {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 .logo {
     position: absolute;
     top: 10px;
     left: 10px;
-    max-height: 40px;
+    max-height: 35px;
     object-fit: contain;
-    filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.7));
+    filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.8));
 }
 
 .avatar-container {
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
     margin: 0 auto 15px auto;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 5px;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3);
 }
 
 .avatar {
@@ -135,113 +161,126 @@ body, html {
 }
 
 .profile-content {
-    background-color: rgba(255, 255, 255, 0.6);
-    padding: 10px;
-    border: 1px solid #999;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 12px;
+    border: 2px inset #888;
     text-align: center;
     font-size: 13px;
-    color: #333;
+    color: #222;
 }
 
 .profile-content h2 {
-    font-size: 18px;
-    margin-bottom: 5px;
-    text-transform: uppercase;
+    font-size: 16px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
 }
 
-.tabs-container {
-    width: 100%;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
-}
-
-.roblox-tabs {
-    background-color: #E1E1E1;
-}
-
-.vortex-tabs {
-    background-color: #DCD0EC;
-}
-
+/* Tabs & Navigation Setup */
 .tab-buttons {
     display: flex;
-    gap: 5px;
-    border-bottom: 3px inset #7da4c4;
-    padding-bottom: 5px;
+    gap: 6px;
+    padding-bottom: 6px;
 }
 
+.roblox-tabs .tab-buttons { border-bottom: 3px inset #7da4c4; }
+.vortex-tabs .tab-buttons { border-bottom: 3px inset #8c63c7; }
+
 .tab-btn {
-    background-color: #cccccc;
-    border: 3px outset #ffffff;
-    padding: 8px 16px;
+    background-color: #c9c9c9;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #555;
+    border-bottom: 2px solid #555;
+    padding: 8px 14px;
     cursor: pointer;
     font-family: "Lucida Console", Monaco, monospace;
     font-weight: bold;
-    color: #333;
-    transition: background 0.1s;
+    font-size: 12px;
+    color: #222;
 }
 
 .tab-btn:hover {
-    background-color: #dddddd;
+    background-color: #dcdcdc;
 }
 
-.tab-btn.active {
-    background-color: #879faa; /* Changes to match theme color */
+/* Visual identity splits for Active Tabs */
+.roblox-tabs .tab-btn.active {
+    background-color: #7da4c4;
     color: white;
-    border: 3px inset #555;
+    border: 2.5px inset #405b72;
 }
 
-/* Tab Content Visibility */
+.vortex-tabs .tab-btn.active {
+    background-color: #8c63c7;
+    color: white;
+    border: 2.5px inset #4d3275;
+}
+
+/* Inner Panels */
 .tab-content {
     display: none;
     padding: 15px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border: 2px inset #999;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 3px inset #888;
     margin-top: 10px;
-    min-height: 150px;
+    min-height: 160px;
 }
 
 .tab-content.active-content {
     display: block;
 }
 
+.roblox-tabs .tab-content h3 { color: #002966; }
+.vortex-tabs .tab-content h3 { color: #3d0066; }
+
 .tab-content h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #002966;
+    font-size: 14px;
+    margin-bottom: 12px;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
 .tab-content p {
-    font-size: 13px;
-    line-height: 1.4;
-    color: #222;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #111;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #aaa;
 }
 
-/* Status Alert Styles */
-.project-box, .status-box {
-    padding: 10px;
-    border: 1px dashed #666;
+.tab-content p:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Status Elements */
+.status-box {
+    padding: 12px;
+    border: 2px dashed #444;
     margin-top: 8px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #fffdec; /* Subtle hint of warning/attention yellow */
+    font-size: 12px;
 }
 
 .highlight-text {
-    color: #3d0066; /* Vortex Purple Accent */
+    color: #3d0066;
     font-weight: bold;
 }
 
 .status-tag {
     color: #cc0000;
     font-weight: bold;
+    background-color: #ffeeee;
+    padding: 2px 6px;
+    border: 1px solid #cc0000;
+    font-size: 11px;
+    display: inline-block;
 }
 
-.tab-divider {
-    margin: 15px 0;
-    border: 0;
-    border-top: 2px ridge #fff;
-}
+/* Link Panels */
 .game-links-list {
     list-style: none;
     padding: 0;
@@ -250,27 +289,25 @@ body, html {
 
 .game-links-list li {
     margin-bottom: 8px;
-    padding: 6px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px inset #bbb;
+    background-color: #ffffff;
+    border: 2px inset #999;
+    transition: transform 0.05s ease;
+}
+
+.game-links-list li:hover {
+    background-color: #f7f9fb;
+    transform: translateX(2px);
 }
 
 .game-links-list a {
     color: #000000;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
     display: block;
+    padding: 8px;
 }
 
 .game-links-list a:hover {
-    color: #002266;
-    text-decoration: underline;
-}
-
-.vortex-tabs .game-links-list a {
-    color: #551a8b;
-}
-.vortex-tabs .game-links-list a:hover {
-    color: #3d0066;
+    color: #002966;
 }
